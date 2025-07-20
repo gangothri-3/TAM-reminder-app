@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TAM - Reminder App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Login / Signup -->
+  <div id="auth-container">
+    <h2>TAM Login</h2>
+    <input type="text" id="auth-username" placeholder="Username" required />
+    <input type="password" id="auth-password" placeholder="Password" required />
+    <button onclick="loginUser()">Login</button>
+    <p>New here? <a href="#" onclick="toggleAuthMode()">Create account</a></p>
+  </div>
+
+  <!-- Main App -->
+  <div id="app-container" style="display: none;">
+    <div class="header">
+      <img src="images/logo.png" alt="TAM Logo" class="logo" />
+      <h1>TAM</h1>
+      <div class="profile-menu-container">
+        <span id="user-display-name"></span>
+        <img src="images/Profile-icon.png" class="profile" onclick="toggleProfileMenu()" />
+        <div id="profileMenu" class="profile-menu">
+          <a href="#" onclick="openSettings()">⚙️ Settings</a>
+          <a href="#" onclick="logoutUser()">🚪 Logout</a>
+          <a href="#" onclick="deleteAccount()">🗑️ Delete Account</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Add a Task Reminder</h2>
+      <input type="text" id="task" placeholder="Enter task" />
+      <input type="datetime-local" id="reminderTime" />
+      <select id="category">
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Study">Study</option>
+      </select>
+      <button onclick="addReminder()">Add Reminder</button>
+
+      <div style="margin-top: 20px;">
+        <label for="filterCategory"><strong>Filter by Category:</strong></label>
+        <select id="filterCategory" onchange="displayReminders()">
+          <option value="All">All</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Study">Study</option>
+        </select>
+      </div>
+
+      <ul id="reminderList"></ul>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSettings()">&times;</span>
+      <h2>Settings</h2>
+
+      <label for="displayName">Display Name:</label>
+      <input type="text" id="displayName" placeholder="Enter your name" />
+
+      <div style="margin-top: 15px;">
+        <label for="themeSelect">Theme:</label>
+        <select id="themeSelect">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+
+      <button onclick="saveSettings()">Save</button>
+      <hr />
+      <button onclick="deleteAccount()" style="background-color: red; color: white; margin-top: 10px;">
+        Delete Account
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
