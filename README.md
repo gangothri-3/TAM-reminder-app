@@ -61,4 +61,3 @@ cd TAM-reminder-app
 
 **📄 License**
 This project is open source and free to use. No frameworks, no backend — just a clean front-end solution.
-
